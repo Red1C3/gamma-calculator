@@ -53,7 +53,7 @@ func fillMainBuffer(med uint8, chn uint8) {
 	}
 }
 func printGamma() {
-	log.Printf("gamma = %f\n", math.Log(0.5)/math.Log(float64(currentmed)))
+	log.Printf("gamma = %f\n", math.Log(128)/math.Log(float64(currentmed)))
 }
 func main() {
 	driver.Main(func(s screen.Screen) {
