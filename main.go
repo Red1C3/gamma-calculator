@@ -19,11 +19,12 @@ const (
 	R = 1
 	G = 2
 	B = 4
+	W = 1 | 2 | 4
 )
 
 var (
 	mainBuffer screen.Buffer
-	channel    uint8 = 1
+	channel    uint8 = W
 	currentmed uint8 = 128
 )
 
@@ -87,6 +88,9 @@ func main() {
 					}
 					if e.Code == key.CodeG {
 						channel = G
+					}
+					if e.Code == key.CodeW {
+						channel = W
 					}
 					fillMainBuffer(currentmed, channel)
 					printGamma()
