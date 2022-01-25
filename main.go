@@ -38,6 +38,7 @@ func fillMainBuffer(med uint8, chn uint8) {
 			div = 0
 		}
 		for j := 0; j < mainBuffer.Size().Y; j++ {
+			// half the buffer is a checkerboard with 0/1 values per channel
 			if i < mainBuffer.Size().X/2 {
 				if j%2 == div {
 					mainBuffer.RGBA().SetRGBA(i, j, color.RGBA{0, 0, 0, 255})
@@ -65,6 +66,7 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
+		defer mainBuffer.Release()
 		fillMainBuffer(currentmed, channel)
 		for {
 			switch e := window.NextEvent().(type) {
